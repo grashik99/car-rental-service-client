@@ -1,7 +1,9 @@
+import { use } from "react";
 import { NavLink } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
 
 const Links = () => {
-  const user = false;
+  const {user} = use(AuthContext)
   return (
     <>
       <li className="">
