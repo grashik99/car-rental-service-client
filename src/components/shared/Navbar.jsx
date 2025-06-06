@@ -4,9 +4,21 @@ import { Link } from "react-router";
 import { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
 const Navbar = () => {
-  const { user } = use(AuthContext);
+  const { user, logOut } = use(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(error)
+      });
+  };
+
   return (
-    <div className="navbar shadow-sm rounded-md bg-base-200/70 text-white">
+    <div className="navbar shadow-sm rounded-md bg-accent/70">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -43,7 +55,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{<Links />}</ul>
+        <ul className="menu menu-horizontal px-1 space-x-2">{<Links />}</ul>
       </div>
       <div className="navbar-end">
         <div className="space-x-2">
@@ -77,14 +89,14 @@ const Navbar = () => {
                     <a>Settings</a>
                   </li>
                   <li>
-                    <a>Logout</a>
+                    <a onClick={handleLogOut}>Logout</a>
                   </li>
                 </ul>
               </div>
             </>
           ) : (
             <>
-              <Link to="/login" className="btn shadow">
+              <Link to="/logIn" className="btn shadow">
                 Login
               </Link>
               <Link to="/register" className="btn shadow">

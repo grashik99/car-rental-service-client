@@ -1,4 +1,10 @@
+import Banner from "../components/banner/Banner";
+
 const HomeLayouts = () => {
-  return <div>HomeLayouts</div>;
+  return (
+    <div>
+      <Banner />
+    </div>
+  );
 };
 export default HomeLayouts;

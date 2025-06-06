@@ -1,42 +1,30 @@
 import { use, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router";
-import { AuthContext } from "../../context/AuthContext";
 
-const Register = () => {
-  const { createUserWithEmail, updateUser } = use(AuthContext);
+const LogIn = () => {
+  const { logIn } = use(AuthContext);
 
   const [showPass, setShowPass] = useState(false);
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
-    const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
     // createNewUser.
-    createUserWithEmail(email, password)
+    logIn(email, password)
       .then((userCredential) => {
+        // Signed in
         const user = userCredential.user;
         console.log(user);
-        const updateInfo = { displayName: name, photoURL: photo };
-        updateUser(updateInfo)
-          .then(() => {
-            // Profile updated!
-            // ...
-            form.reset()
-          })
-          .catch((error) => {
-            console.log(error);
-            // An error occurred
-            // ...
-          });
+        form.reset()
+        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage)
-        // ..
+        console.log(errorCode, errorMessage);
       });
   };
 
@@ -49,24 +37,6 @@ const Register = () => {
       <div className="card bg-base-200/90 w-10/12 md:w-fit md:min-w-[350px] shrink-0 shadow-2xl">
         <div className="card-body">
           <form onSubmit={handleSignUp} className="fieldset">
-            <label className="label">Name</label>
-            <input
-              type="text"
-              className="input"
-              placeholder="Name"
-              name="name"
-              required
-            />
-
-            <label className="label">Photo URL</label>
-            <input
-              type="url"
-              className="input"
-              placeholder="Photo URL"
-              name="photo"
-              required
-            />
-
             <label className="label">Email</label>
             <input
               type="email"
@@ -92,14 +62,14 @@ const Register = () => {
             </div>
             <div>
               <p>
-                Already have an account?{" "}
-                <Link to="/logIn" className="text-blue-500 link link-hover">
-                  Login
+                Don't have an account?{" "}
+                <Link to="/register" className="text-blue-500 link link-hover">
+                  Register
                 </Link>
               </p>
             </div>
             <button type="submit" className="btn btn-neutral mt-4">
-              Sign Up
+              Sign In
             </button>
           </form>
         </div>
@@ -107,4 +77,4 @@ const Register = () => {
     </div>
   );
 };
-export default Register;
+export default LogIn;

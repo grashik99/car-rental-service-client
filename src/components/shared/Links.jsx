@@ -18,7 +18,7 @@ const Links = () => {
             <NavLink to="/addCar">Add Car</NavLink>
           </li>
           <li>
-            <NavLink to="/myCar">My Car</NavLink>
+            <NavLink to="/myCars">My Car</NavLink>
           </li>
           <li>
             <NavLink to="/myBooking">My Booking</NavLink>
