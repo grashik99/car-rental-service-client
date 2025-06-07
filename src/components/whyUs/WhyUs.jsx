@@ -49,7 +49,7 @@ const WhyUs = () => {
               navigation={true}
               modules={[Pagination, Navigation, Autoplay]}
               autoplay={{
-                delay: 3000,
+                delay: 6000,
                 disableOnInteraction: false,
               }}
               className="mySwiper"
@@ -79,11 +79,15 @@ const WhyUs = () => {
 
               <SwiperSlide>
                 <div className="relative">
-                  <img src={cars} alt="Cars" className="w-full h-auto" />
+                  <img
+                    src={s_driver}
+                    alt="s_driver"
+                    className="w-full h-auto"
+                  />
                   <div className="absolute text-xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white md:text-3xl font-bold px-4 py-2 bg-opacity-60 bg-black/50 rounded-lg shadow-lg">
                     <Typewriter
                       words={[
-                        "WE HAVE A HUGE COLLECTION OF EXCITING CARS. YOUR DREAM RIDE AWAITS!",
+                        "OUR DRIVERS ARE HIGHLY TRAINED, PROFESSIONAL, AND COURTEOUS.",
                       ]}
                       loop={Infinity}
                       cursor
@@ -98,11 +102,15 @@ const WhyUs = () => {
 
               <SwiperSlide>
                 <div className="relative">
-                  <img src={cars} alt="Cars" className="w-full h-auto" />
+                  <img
+                    src={re_inform}
+                    alt="re_inform"
+                    className="w-full h-auto"
+                  />
                   <div className="absolute text-xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white md:text-3xl font-bold px-4 py-2 bg-opacity-60 bg-black/50 rounded-lg shadow-lg">
                     <Typewriter
                       words={[
-                        "WE HAVE A HUGE COLLECTION OF EXCITING CARS. YOUR DREAM RIDE AWAITS!",
+                        "OUR DRIVERS ARE PROFESSIONALLY TRAINED THROUGH RIGOROUS PROGRAMS TO ENSURE SAFETY.",
                       ]}
                       loop={Infinity}
                       cursor
@@ -117,11 +125,15 @@ const WhyUs = () => {
 
               <SwiperSlide>
                 <div className="relative">
-                  <img src={cars} alt="Cars" className="w-full h-auto" />
+                  <img
+                    src={call_services}
+                    alt="call_services"
+                    className="w-full h-auto"
+                  />
                   <div className="absolute text-xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white md:text-3xl font-bold px-4 py-2 bg-opacity-60 bg-black/50 rounded-lg shadow-lg">
                     <Typewriter
                       words={[
-                        "WE HAVE A HUGE COLLECTION OF EXCITING CARS. YOUR DREAM RIDE AWAITS!",
+                        "OUR 24/7 CALL SERVICE IS ALWAYS READY TO ASSIST YOU—FAST, FRIENDLY, AND RELIABLE SUPPORT WHENEVER YOU NEED IT",
                       ]}
                       loop={Infinity}
                       cursor
