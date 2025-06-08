@@ -9,6 +9,7 @@ import MyCars from "../components/myCars/MyCars";
 import AvailableCars from "../components/availableCars/AvailableCars";
 import MyBooking from "../components/myBooking/MyBooking";
 import LogIn from "../components/logIn/LogIn";
+import Booknow from "../pages/Booknow";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,7 @@ export const router = createBrowserRouter([
       {
         path: "/availableCars",
         element: <AvailableCars />,
+        loader: () => fetch("http://localhost:3000/cars/available"),
       },
       {
         path: "/addCar",
@@ -47,6 +49,15 @@ export const router = createBrowserRouter([
             <MyCars />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/bookNow/:id",
+        element: (
+          <PrivateRoute>
+            <Booknow />
+          </PrivateRoute>
+        ),
+        loader: ({params}) => fetch(`http://localhost:3000/car/${params.id}`)
       },
       {
         path: "/myBooking",

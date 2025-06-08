@@ -6,13 +6,9 @@ const Footer = () => {
   return (
     <footer className="footer footer-horizontal footer-center rounded p-10 bg-accent/70">
       <Link to="/">
-        <img
-          src={logo}
-          className="w-28"
-          alt="logo"
-        />
+        <img src={logo} className="w-28" alt="logo" />
       </Link>
-      <ul className="menu menu-horizontal px-1 flex">{<Links />}</ul>
+      <ul className="menu md:menu-horizontal px-1 flex">{<Links />}</ul>
       <nav>
         <div className="grid grid-flow-col gap-4">
           <a href="https://x.com/" target="_blank">
