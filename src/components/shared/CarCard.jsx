@@ -1,7 +1,31 @@
-import { Link } from "react-router";
+import axios from "axios";
+import { Link, useNavigate } from "react-router";
 
-const CarCard = ({ car, my }) => {
-  console.log(car, my);
+const CarCard = ({ car, my, myBook }) => {
+  const navigate = useNavigate()
+  const cancelBook = (id, bookingId) => {
+    console.log(id, bookingId);
+    axios
+      .delete(`http://localhost:3000/booked/delete/${bookingId}`)
+      .then((response) => {
+        console.log("Deleted:", response.data);
+        axios
+          .patch(`http://localhost:3000/car/${id}`, {
+            availability: "Available",
+          })
+          .then((response) => {
+            console.log("Updated:", response.data);
+            navigate('/availableCars')
+          })
+          .catch((error) => {
+            console.error("Error updating:", error);
+          });
+      })
+      .catch((error) => {
+        console.error("Error deleting:", error);
+      });
+  };
+  console.log(car);
   return (
     <div className="w-full md:max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
       <img
@@ -14,15 +38,31 @@ const CarCard = ({ car, my }) => {
         <div className="grid grid-cols-2">
           <p className="text-gray-600">Price: ${car.price}/day</p>
           <p className="text-sm">Location: {car.location}</p>
-          <p className="text-sm text-gray-500">Bookings: {car.bookingCount}</p>
+          {myBook ? (
+            <p className="text-sm text-gray-500">Booking End: {car.endDate}</p>
+          ) : (
+            <p className="text-sm text-gray-500">
+              Bookings: {car.bookingCount}
+            </p>
+          )}
         </div>
         <p className="text-sm text-gray-500">
-          Added By: {car.addedBy} ({car.email})
+          Owner: {car.addedBy} ({car.email})
         </p>
         {my ? (
+          <div className="flex justify-between">
           <Link>
-            <button className="btn btn-success w-full">Edit Info</button>
+            <button className="btn btn-success">Edit Info</button>
           </Link>
+          <button className="btn btn-warning">Delete</button>
+          </div>
+        ) : myBook ? (
+          <button
+            className="btn btn-success w-full"
+            onClick={() => cancelBook(car._id, car.bookingId)}
+          >
+            Cancel Booking
+          </button>
         ) : (
           <Link to={`/bookNow/${car._id}`}>
             <button className="btn btn-success w-full">View Details</button>

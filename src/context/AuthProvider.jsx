@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [myCarLoading, setMyCarLoading] = useState(true);
 
   const createUserWithEmail = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -46,6 +47,8 @@ const AuthProvider = ({ children }) => {
     logIn,
     loading,
     setLoading,
+    myCarLoading,
+    setMyCarLoading
   };
 
   console.log(user);

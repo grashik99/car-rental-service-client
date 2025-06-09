@@ -2,6 +2,7 @@ import { use, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
 
 const Register = () => {
   const { createUserWithEmail, updateUser } = use(AuthContext);
@@ -24,7 +25,12 @@ const Register = () => {
           .then(() => {
             // Profile updated!
             // ...
-            form.reset()
+            axios({
+              method: "post",
+              url: "http://localhost:3000/addUser",
+              data: { name, email, photo },
+            }).then(res => console.log(`User added to mongoDB${res}`))
+            form.reset();
           })
           .catch((error) => {
             console.log(error);
@@ -35,7 +41,7 @@ const Register = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage)
+        console.log(errorCode, errorMessage);
         // ..
       });
   };

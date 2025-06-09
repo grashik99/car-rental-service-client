@@ -21,7 +21,8 @@ const AddCar = () => {
       imageUrl: formData.get("imageUrl"),
       location: formData.get("location"),
       addedBy: user?.displayName,
-      email: user?.email
+      email: user?.email,
+      photo: user?.photoURL
     };
     // console.log(carData);
     axios({

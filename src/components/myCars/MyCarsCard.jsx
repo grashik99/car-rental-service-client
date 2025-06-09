@@ -10,7 +10,7 @@ const MyCarsCard = ({ myCarsPromise }) => {
   return (
     <div className="my-2 md:my-4  bg-cover bg-center" >
       {cars.length >= 1 ? (
-        <div className="grid md:grid-cols-3 border justify-between gap-4">
+        <div className="grid md:grid-cols-3 justify-between gap-4">
           {cars.map((car) => (
             <CarCard key={car._id} car={car} my={my} />
           ))}

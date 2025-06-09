@@ -4,7 +4,7 @@ const CarList = ({car, index}) => {
     console.log(index)
   return (
     <>
-      <li className="list-row">
+      <li className="list-row items-center">
         <div className="text-4xl font-thin opacity-30 tabular-nums">{index}</div>
         <div>
           <img
