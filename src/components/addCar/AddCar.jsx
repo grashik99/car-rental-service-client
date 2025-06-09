@@ -2,9 +2,12 @@ import axios from "axios";
 import bg from "../../assets/root-bg-x.jpg";
 import { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 const AddCar = () => {
-  const {user} = use(AuthContext);
+  const { user } = use(AuthContext);
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,16 +25,31 @@ const AddCar = () => {
       location: formData.get("location"),
       addedBy: user?.displayName,
       email: user?.email,
-      photo: user?.photoURL
+      photo: user?.photoURL,
     };
-    // console.log(carData);
+
     axios({
       method: "post",
       url: "http://localhost:3000/addCar",
       data: carData,
     })
-      .then((res) => console.log(res.data))
-      .catch((error) => console.log(error));
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "The vehicle was successfully added.",
+            icon: "success",
+            draggable: true,
+          });
+          navigate('/myCars')
+        }
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: `${error}`,
+          icon: "warning",
+          draggable: true,
+        });
+      });
   };
   return (
     <div

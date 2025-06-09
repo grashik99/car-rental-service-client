@@ -6,7 +6,6 @@ import bg from "../../assets/bg-x-4.jpg"
 const MyCarsCard = ({ myCarsPromise }) => {
   const cars = use(myCarsPromise);
   const my = true;
-  console.log(cars.length);
   return (
     <div className="my-2 md:my-4  bg-cover bg-center" >
       {cars.length >= 1 ? (

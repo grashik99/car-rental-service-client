@@ -61,6 +61,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) => fetch(`http://localhost:3000/car/${params.id}`),
+        hydrateFallbackElement: <Loading />,
       },
       {
         path: "/bookNow/:id",

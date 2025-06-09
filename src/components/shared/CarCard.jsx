@@ -51,48 +51,101 @@ const CarCard = ({ car, my, myBook }) => {
         }
       });
   };
+
+  const handleDelete = () => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          if (car.availability === "Available") {
+            axios
+              .delete(`http://localhost:3000/car/delete/${car._id}`)
+              .then((res) => {
+                if (res.status === 200) {
+                  swalWithBootstrapButtons.fire({
+                    title: "Deleted!",
+                    text: "Your car has been deleted.",
+                    icon: "success",
+                  });
+                  navigate("/");
+                }
+              })
+              .catch((error) => console.log(error));
+          } else {
+            Swal.fire({
+              title: "Booked",
+              icon: "warning",
+              draggable: true,
+            });
+          }
+        }
+      });
+  };
+
   return (
-    <div className="w-full md:max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="w-full md:max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full">
       <img
         src={car.imageUrl}
         alt={car.model}
         className="w-full h-56 object-cover"
       />
-      <div className="p-5 space-y-2">
+      <div className="p-5 flex flex-col flex-grow">
         <h2 className="text-2xl font-bold">{car.model}</h2>
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 gap-y-1 mt-2">
           <p className="text-gray-600">Price: ${car.price}/day</p>
           <p className="text-sm">Location: {car.location}</p>
           {myBook ? (
-            <p className="text-sm text-gray-500">Booking End: {car.endDate}</p>
+            <p className="text-sm text-gray-500 col-span-2">
+              Booking End: {car.endDate}
+            </p>
           ) : (
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-500 col-span-2">
               Bookings: {car.bookingCount}
             </p>
           )}
         </div>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 mt-2">
           Owner: {car.addedBy} ({car.email})
         </p>
-        {my ? (
-          <div className="flex justify-between">
-            <Link to={`/updateCar/${car._id}`}>
-              <button className="btn btn-success">Edit Info</button>
+
+        <div className="mt-auto pt-4">
+          {my ? (
+            <div className="flex justify-between">
+              <Link to={`/updateCar/${car._id}`}>
+                <button className="btn btn-success">Edit Info</button>
+              </Link>
+              <button onClick={handleDelete} className="btn btn-warning">
+                Delete
+              </button>
+            </div>
+          ) : myBook ? (
+            <button
+              className="btn btn-success w-full"
+              onClick={() => cancelBook(car._id, car.bookingId)}
+            >
+              Cancel Booking
+            </button>
+          ) : (
+            <Link to={`/bookNow/${car._id}`}>
+              <button className="btn btn-success w-full">View Details</button>
             </Link>
-            <button className="btn btn-warning">Delete</button>
-          </div>
-        ) : myBook ? (
-          <button
-            className="btn btn-success w-full"
-            onClick={() => cancelBook(car._id, car.bookingId)}
-          >
-            Cancel Booking
-          </button>
-        ) : (
-          <Link to={`/bookNow/${car._id}`}>
-            <button className="btn btn-success w-full">View Details</button>
-          </Link>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

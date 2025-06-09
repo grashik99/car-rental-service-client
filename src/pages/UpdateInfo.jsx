@@ -1,10 +1,14 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import bg from "../assets/root-bg-x.jpg";
 import axios from "axios";
+import Swal from "sweetalert2";
+import { use } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const UpdateInfo = () => {
   const car = useLoaderData();
-  console.log(car);
+  const { user } = use(AuthContext);
+  const navigate = useNavigate()
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -20,13 +24,53 @@ const UpdateInfo = () => {
       imageUrl: formData.get("imageUrl"),
       location: formData.get("location"),
     };
-    axios
-      .patch(`http://localhost:3000/car/${car._id}`, updateData)
-      .then((response) => {
-        console.log("Updated:", response.data);
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+    },
+      buttonsStyling: false,
+    });
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure you want to update?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        reverseButtons: true,
       })
-      .catch((error) => {
-        console.error("Error updating:", error);
+      .then((result) => {
+        if (result.isConfirmed) {
+          if (user.email === car.email) {
+            axios
+              .patch(`http://localhost:3000/car/${car._id}`, updateData)
+              .then((response) => {
+                if (response.data.modifiedCount === 1) {
+                  swalWithBootstrapButtons.fire({
+                    title: "Success!",
+                    text: "Data updated successfully.",
+                    icon: "success",
+                  });
+                  navigate('/myCars')
+                }else if(response.data.modifiedCount === 0){
+                  swalWithBootstrapButtons.fire({
+                    title: "Failed",
+                    text: "You don't provide any update info.",
+                    icon: "warning",
+                  });
+                }
+              })
+              .catch((error) => {
+                swalWithBootstrapButtons.fire({
+                    title: "Error",
+                    text: `${error}`,
+                    icon: "error",
+                  });
+              });
+          }
+        }
       });
   };
 
