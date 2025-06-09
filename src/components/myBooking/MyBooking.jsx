@@ -16,7 +16,6 @@ const MyBooking = () => {
       });
   }, [user, setMyCarLoading]);
 
-  console.log(booked);
   return (
     <div className="my-2">
       {myCarLoading ? (
@@ -25,7 +24,7 @@ const MyBooking = () => {
         <>
           <div className="grid md:grid-cols-3 justify-between gap-4">
             {booked?.map((car) => (
-              <CarCard key={car._id} car={car} myBook={myBook}/>
+              <CarCard key={car._id} car={car} myBook={myBook} />
             ))}
           </div>
         </>

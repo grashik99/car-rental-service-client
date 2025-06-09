@@ -6,7 +6,6 @@ import CarList from "../shared/CarList";
 const AvailableCars = () => {
   const cars = useLoaderData();
   const [view, setView] = useState(true);
-  console.log(cars.length);
   return (
      <div className="w-[98%] md:w-[90%] mx-auto mb-4">
       {cars.length >= 1 ? (

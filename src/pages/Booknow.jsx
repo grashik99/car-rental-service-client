@@ -2,35 +2,39 @@ import axios from "axios";
 import { use } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 const Booknow = () => {
   const car = useLoaderData();
   const { user } = use(AuthContext);
   const today = new Date().toISOString().split("T")[0];
   const tomorrow = new Date(Date.now() + 86400000).toISOString().split("T")[0];
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleBooking = () => {
     const startDate = document.getElementById("startDate").value;
     const endDate = document.getElementById("endDate").value;
-    console.log(startDate, endDate);
     axios({
       method: "post",
       url: "http://localhost:3000/booking",
       data: { carId: car._id, bookedBy: user.email, startDate, endDate },
     })
       .then(function (response) {
-        console.log(response);
         const newBookingCount = car.bookingCount + 1;
-
         axios
           .patch(`http://localhost:3000/car/${car._id}`, {
             availability: "Unavailable",
             bookingCount: newBookingCount,
           })
           .then((response) => {
-            console.log("Updated:", response.data);
-            navigate('/myBooking')
+            if (response.data.modifiedCount) {
+              Swal.fire({
+                title: "Car Booked!",
+                icon: "success",
+                draggable: true,
+              });
+            }
+            navigate("/myBooking");
           })
           .catch((error) => {
             console.error("Error updating:", error);

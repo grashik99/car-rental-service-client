@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
-      setLoading(false)
+      setLoading(false);
     });
     return unsubscribe;
   }, []);
@@ -48,10 +48,8 @@ const AuthProvider = ({ children }) => {
     loading,
     setLoading,
     myCarLoading,
-    setMyCarLoading
+    setMyCarLoading,
   };
-
-  console.log(user);
 
   return <AuthContext value={authInfo}>{children}</AuthContext>;
 };

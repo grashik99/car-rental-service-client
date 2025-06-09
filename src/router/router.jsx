@@ -10,6 +10,8 @@ import AvailableCars from "../components/availableCars/AvailableCars";
 import MyBooking from "../components/myBooking/MyBooking";
 import LogIn from "../components/logIn/LogIn";
 import Booknow from "../pages/Booknow";
+import UpdateInfo from "../pages/UpdateInfo";
+import Loading from "../pages/Loading";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +35,7 @@ export const router = createBrowserRouter([
         path: "/availableCars",
         element: <AvailableCars />,
         loader: () => fetch("http://localhost:3000/cars/available"),
+        hydrateFallbackElement: <Loading />,
       },
       {
         path: "/addCar",
@@ -51,13 +54,23 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "/updateCar/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateInfo />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => fetch(`http://localhost:3000/car/${params.id}`),
+      },
+      {
         path: "/bookNow/:id",
         element: (
           <PrivateRoute>
             <Booknow />
           </PrivateRoute>
         ),
-        loader: ({params}) => fetch(`http://localhost:3000/car/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:3000/car/${params.id}`),
+        hydrateFallbackElement: <Loading />,
       },
       {
         path: "/myBooking",

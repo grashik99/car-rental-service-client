@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 
 const CarList = ({car, index}) => {
-    console.log(index)
   return (
     <>
       <li className="list-row items-center">

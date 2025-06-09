@@ -1,31 +1,56 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 const CarCard = ({ car, my, myBook }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const cancelBook = (id, bookingId) => {
-    console.log(id, bookingId);
-    axios
-      .delete(`http://localhost:3000/booked/delete/${bookingId}`)
-      .then((response) => {
-        console.log("Deleted:", response.data);
-        axios
-          .patch(`http://localhost:3000/car/${id}`, {
-            availability: "Available",
-          })
-          .then((response) => {
-            console.log("Updated:", response.data);
-            navigate('/availableCars')
-          })
-          .catch((error) => {
-            console.error("Error updating:", error);
-          });
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You might not be able to return it!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Cancel It!",
+        cancelButtonText: "No, Keep It!",
+        reverseButtons: true,
       })
-      .catch((error) => {
-        console.error("Error deleting:", error);
+      .then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .delete(`http://localhost:3000/booked/delete/${bookingId}`)
+            .then((response) => {
+              axios
+                .patch(`http://localhost:3000/car/${id}`, {
+                  availability: "Available",
+                })
+                .then((response) => {
+                  if (response.data.modifiedCount === 1) {
+                    swalWithBootstrapButtons.fire({
+                      title: "Cancelled!",
+                      text: "Your Booking has been cancelled.",
+                      icon: "success",
+                    });
+                    navigate("/availableCars");
+                  }
+                })
+                .catch((error) => {
+                  console.error("Error updating:", error);
+                });
+            })
+            .catch((error) => {
+              console.error("Error deleting:", error);
+            });
+        }
       });
   };
-  console.log(car);
   return (
     <div className="w-full md:max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
       <img
@@ -51,10 +76,10 @@ const CarCard = ({ car, my, myBook }) => {
         </p>
         {my ? (
           <div className="flex justify-between">
-          <Link>
-            <button className="btn btn-success">Edit Info</button>
-          </Link>
-          <button className="btn btn-warning">Delete</button>
+            <Link to={`/updateCar/${car._id}`}>
+              <button className="btn btn-success">Edit Info</button>
+            </Link>
+            <button className="btn btn-warning">Delete</button>
           </div>
         ) : myBook ? (
           <button
