@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/AuthContext";
 import Loading from "../../pages/Loading";
 import CarCard from "../shared/CarCard";
 import { Link } from "react-router";
+import bg from "../../assets/bg-x-3.jpg";
 
 const MyBooking = () => {
   const { user, myCarLoading, setMyCarLoading } = use(AuthContext);
@@ -18,32 +19,44 @@ const MyBooking = () => {
   }, [user, setMyCarLoading]);
 
   return (
-    <div className="my-2">
-      {myCarLoading ? (
-        <Loading />
-      ) : booked?.length >= 1 ? (
-        <>
-          <div className="grid md:grid-cols-3 justify-between gap-4">
-            {booked?.map((car) => (
-              <CarCard key={car._id} car={car} myBook={myBook} />
-            ))}
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="card md:w-96 mx-auto bg-warning text-white card-md shadow-sm md:my-50">
-            <div className="card-body">
-              <h2 className="card-title md:text-4xl p-2 bg-red-500 rounded-xl">No car booked.</h2>
-              <p className="md:text-xl">
-                Hurry up, the existing offer is running now, take a look now.
-              </p>
-              <div className="justify-end card-actions">
-                <Link to='/availableCars' className="btn btn-primary">Cars</Link>
+    <div
+      style={{ backgroundImage: `url(${bg})` }}
+      className="bg-cover bg-center min-h-[50vh]"
+    >
+      <div className="py-2 w-[98%] md:w-[90%] mx-auto">
+        {myCarLoading ? (
+          <Loading />
+        ) : booked?.length >= 1 ? (
+          <>
+            <div className="grid md:grid-cols-3 justify-between gap-4">
+              {booked?.map((car) => (
+                <CarCard key={car._id} car={car} myBook={myBook} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex justify-center items-center">
+              <div className="card md:w-96 mx-auto bg-warning/50 text-white card-md shadow-sm md:my-50">
+                <div className="card-body">
+                  <h2 className="card-title md:text-4xl p-2 bg-red-500 rounded-xl">
+                    No car booked.
+                  </h2>
+                  <p className="md:text-xl">
+                    Hurry up, the existing offer is running now, take a look
+                    now.
+                  </p>
+                  <div className="justify-end card-actions">
+                    <Link to="/availableCars" className="btn btn-primary">
+                      Cars
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </>
-      )}
+          </>
+        )}
+      </div>
     </div>
   );
 };

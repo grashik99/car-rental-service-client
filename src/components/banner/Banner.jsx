@@ -1,7 +1,8 @@
 import Lottie from "lottie-react";
-import car1Lottie from "../../assets/lottie/car (1).json";
-import bg from "../../assets/bg-x-3.jpg";
+import car1Lottie from "../../assets/lottie/car (4).json";
+import bg from "../../assets/multiple-car.png";
 import { Link } from "react-router";
+import { Typewriter } from "react-simple-typewriter";
 
 const Banner = () => {
   return (
@@ -21,7 +22,15 @@ const Banner = () => {
       <div className="absolute inset-0 z-10 flex justify-center items-center px-4 text-center">
         <div>
           <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            UNLOCK FREEDOM WITH EVERY RIDE
+            <Typewriter
+              words={["UNLOCK FREEDOM WITH EVERY RIDE"]}
+              loop={Infinity}
+              cursor
+              cursorStyle="!"
+              typeSpeed={50}
+              deleteSpeed={80}
+              delaySpeed={6000}
+            />
           </h1>
           <Link to="/availableCars" className="btn btn-info text-white text-lg">
             View Available Cars

@@ -26,7 +26,7 @@ const CarCard = ({ car, my, myBook }) => {
         if (result.isConfirmed) {
           axios
             .delete(`http://localhost:3000/booked/delete/${bookingId}`)
-            .then((response) => {
+            .then(() => {
               axios
                 .patch(`http://localhost:3000/car/${id}`, {
                   availability: "Available",
@@ -98,7 +98,7 @@ const CarCard = ({ car, my, myBook }) => {
   };
 
   return (
-    <div className="w-full md:max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full">
+    <div className="w-full mx-auto bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full">
       <img
         src={car.imageUrl}
         alt={car.model}

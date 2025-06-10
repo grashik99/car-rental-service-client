@@ -1,15 +1,14 @@
 import { Link } from "react-router";
 
-const CarList = ({car, index}) => {
+const CarList = ({ car, index }) => {
   return (
     <>
       <li className="list-row items-center">
-        <div className="text-4xl font-thin opacity-30 tabular-nums">{index}</div>
+        <div className="text-4xl font-thin opacity-30 tabular-nums">
+          {index + 1}
+        </div>
         <div>
-          <img
-            className="size-15 rounded-box"
-            src={car.imageUrl}
-          />
+          <img className="size-15 rounded-box" src={car.imageUrl} />
         </div>
         <div className="list-col-grow">
           <div>{car.model}</div>

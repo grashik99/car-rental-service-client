@@ -7,7 +7,7 @@ const MyCarsCard = ({ myCarsPromise }) => {
   const cars = use(myCarsPromise);
   const my = true;
   return (
-    <div className="my-2 md:my-4  bg-cover bg-center" >
+    <div className="py-2 md:py-4  bg-cover bg-center" >
       {cars.length >= 1 ? (
         <div className="grid md:grid-cols-3 justify-between gap-4">
           {cars.map((car) => (
