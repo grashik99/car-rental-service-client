@@ -98,7 +98,7 @@ const CarCard = ({ car, my, myBook }) => {
   };
 
   return (
-    <div className="w-full mx-auto bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full">
+    <div className="w-full mx-auto bg-white rounded-xl hover:border-green-400  border-white border hover:bg-white/80 shadow-xl overflow-hidden flex flex-col h-full">
       <img
         src={car.imageUrl}
         alt={car.model}

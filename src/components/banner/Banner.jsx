@@ -16,8 +16,14 @@ const Banner = () => {
           className="w-full h-full object-cover"
         />
       </div>
+      <div className="absolute top-0 right-0 w-fit h-full z-0 hidden md:flex">
+        <Lottie
+          animationData={car1Lottie}
+          className="w-full h-full object-cover"
+        />
+      </div>
 
-      <div className="absolute inset-0 bg-black/40 z-[1]"></div>
+      <div className="absolute inset-0 bg-black/30 z-[1]"></div>
 
       <div className="absolute inset-0 z-10 flex justify-center items-center px-4 text-center">
         <div>

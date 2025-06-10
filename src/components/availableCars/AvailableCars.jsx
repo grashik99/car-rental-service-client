@@ -12,7 +12,7 @@ const AvailableCars = () => {
       <div className="w-[98%] md:w-[90%] mx-auto pb-4">
         {cars.length >= 1 ? (
           <>
-            <div className="navbar shadow-2xl my-2 mb-4 rounded-sm">
+            <div className="navbar mb-4 rounded-sm">
               <div className="navbar-start"></div>
               <div className="navbar-center">
                 <h2 className="text-3xl font-bold">

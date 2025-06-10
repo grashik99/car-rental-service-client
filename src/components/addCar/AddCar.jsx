@@ -4,6 +4,8 @@ import { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
+import Lottie from "lottie-react";
+import car1Lottie from "../../assets/lottie/car (4).json";
 
 const AddCar = () => {
   const { user } = use(AuthContext);
@@ -40,7 +42,7 @@ const AddCar = () => {
             icon: "success",
             draggable: true,
           });
-          navigate('/myCars')
+          navigate("/myCars");
         }
       })
       .catch((error) => {
@@ -56,7 +58,14 @@ const AddCar = () => {
       style={{ backgroundImage: `url(${bg})` }}
       className="bg-cover bg-center py-4"
     >
-      <div className="max-w-3xl mx-auto bg-base-100/40 p-8 rounded-xl shadow-lg mt-10">
+      <div className="absolute md:-top-50 md:right-10 z-0 overflow-hidden">
+        <Lottie
+          animationData={car1Lottie}
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      <div className="relative max-w-3xl mx-auto bg-base-100/20 p-8 rounded-xl shadow-lg mt-10 z-10">
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
           Add a New Car
         </h2>
