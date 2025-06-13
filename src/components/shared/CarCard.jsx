@@ -28,7 +28,7 @@ const CarCard = ({ car, my, myBook }) => {
         if (result.isConfirmed) {
           if (car.availability === "Available") {
             axios
-              .delete(`http://localhost:3000/car/delete/${car._id}`)
+              .delete(`https://take-your-car-sever.vercel.app/car/delete/${car._id}`)
               .then((res) => {
                 if (res.status === 200) {
                   swalWithBootstrapButtons.fire({

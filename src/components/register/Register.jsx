@@ -27,7 +27,7 @@ const navigate = useNavigate()
           .then(() => {
             axios({
               method: "post",
-              url: "http://localhost:3000/addUser",
+              url: "https://take-your-car-sever.vercel.app/addUser",
               data: { name, email, photo },
             }).then((res) => {
               console.log(res.data.insertedId);

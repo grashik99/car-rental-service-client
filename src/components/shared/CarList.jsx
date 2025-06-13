@@ -25,10 +25,10 @@ const CarList = ({ car, index, myBook }) => {
       .then((result) => {
         if (result.isConfirmed) {
           axios
-            .delete(`http://localhost:3000/booked/delete/${bookingId}`)
+            .delete(`https://take-your-car-sever.vercel.app/booked/delete/${bookingId}`)
             .then(() => {
               axios
-                .patch(`http://localhost:3000/car/${id}`, {
+                .patch(`https://take-your-car-sever.vercel.app/car/${id}`, {
                   availability: "Available",
                 })
                 .then((response) => {

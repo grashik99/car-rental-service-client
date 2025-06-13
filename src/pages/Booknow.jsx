@@ -23,13 +23,13 @@ const Booknow = () => {
     const totalPrice = totalPriceWithoutVet + vet;
     axios({
       method: "post",
-      url: "http://localhost:3000/booking",
+      url: "https://take-your-car-sever.vercel.app/booking",
       data: { carId: car._id, bookedBy: user.email, startDate, endDate },
     })
       .then(function () {
         const newBookingCount = car.bookingCount + 1;
         axios
-          .patch(`http://localhost:3000/car/${car._id}`, {
+          .patch(`https://take-your-car-sever.vercel.app/car/${car._id}`, {
             availability: "Unavailable",
             bookingCount: newBookingCount,
             totalPrice,

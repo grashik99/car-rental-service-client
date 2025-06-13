@@ -34,7 +34,7 @@ const AddCar = () => {
 
     axios({
       method: "post",
-      url: "http://localhost:3000/addCar",
+      url: "https://take-your-car-sever.vercel.app/addCar",
       data: carData,
     })
       .then((res) => {

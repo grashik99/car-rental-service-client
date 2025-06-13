@@ -45,7 +45,7 @@ const UpdateInfo = () => {
         if (result.isConfirmed) {
           if (user.email === car.email) {
             axios
-              .patch(`http://localhost:3000/car/${car._id}`, updateData)
+              .patch(`https://take-your-car-sever.vercel.app/car/${car._id}`, updateData)
               .then((response) => {
                 if (response.data.modifiedCount === 1) {
                   swalWithBootstrapButtons.fire({

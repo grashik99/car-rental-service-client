@@ -1,5 +1,5 @@
 import { use } from "react";
-import CarCard from "../shared/CarCard";
+import CarList from "../shared/CarList";
 import { Link } from "react-router";
 import bg from "../../assets/bg-x-6.jpg";
 
@@ -11,7 +11,7 @@ const MyCarsCard = ({ myCarsPromise }) => {
       {cars.length >= 1 ? (
         <div className="grid md:grid-cols-3 justify-between gap-4">
           {cars.map((car) => (
-            <CarCard key={car._id} car={car} my={my} />
+            <CarList key={car._id} car={car} my={my} />
           ))}
         </div>
       ) : (

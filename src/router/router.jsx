@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
       {
         path: "/availableCars",
         element: <AvailableCars />,
-        loader: () => fetch("http://localhost:3000/cars/available"),
+        loader: () => fetch("https://take-your-car-sever.vercel.app/cars/available"),
         hydrateFallbackElement: <Loading />,
       },
       {
@@ -78,7 +78,7 @@ export const router = createBrowserRouter([
             <UpdateInfo />
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:3000/car/${params.id}`),
+        loader: ({ params }) => fetch(`https://take-your-car-sever.vercel.app/car/${params.id}`),
         hydrateFallbackElement: <Loading />,
       },
       {
@@ -88,7 +88,7 @@ export const router = createBrowserRouter([
             <Booknow />
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:3000/car/${params.id}`),
+        loader: ({ params }) => fetch(`https://take-your-car-sever.vercel.app/car/${params.id}`),
         hydrateFallbackElement: <Loading />,
       },
       {

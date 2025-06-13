@@ -5,7 +5,7 @@ import Loading from "../../pages/Loading";
 import bg from "../../assets/bg-long.jpg";
 
 const myCarsPromise = (email, accessToken) => {
-  return fetch(`http://localhost:3000/mycars?email=${email}`, {
+  return fetch(`https://take-your-car-sever.vercel.app/mycars?email=${email}`, {
     headers: {
       authorization: `Bearer ${accessToken}`,
     },

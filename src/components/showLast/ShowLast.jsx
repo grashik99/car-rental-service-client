@@ -6,7 +6,7 @@ const ShowLast = () => {
   const [cars, setCars] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/cars")
+    fetch("https://take-your-car-sever.vercel.app/cars")
       .then((res) => res.json())
       .then((data) => {
         setCars(data);

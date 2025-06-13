@@ -10,7 +10,7 @@ const MyBooking = () => {
   const [booked, setBooked] = useState(null);
   const myBook = true;
   useEffect(() => {
-    fetch(`http://localhost:3000/mybooked?email=${user.email}`,{
+    fetch(`https://take-your-car-sever.vercel.app/mybooked?email=${user.email}`,{
       headers: {
         authorization: `Bearer ${user.accessToken}`
       }
