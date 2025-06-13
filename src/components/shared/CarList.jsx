@@ -67,7 +67,7 @@ const CarList = ({ car, index, myBook }) => {
             <>
             <div>
               <p>Booking Date: {car.startDate}</p>
-              <p>Total Price: {car.totalPrice}</p>
+              <p>Total Price: ${car.totalPrice}</p>
             </div>
             </>
           ) : (

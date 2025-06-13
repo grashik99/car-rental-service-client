@@ -10,7 +10,11 @@ const MyBooking = () => {
   const [booked, setBooked] = useState(null);
   const myBook = true;
   useEffect(() => {
-    fetch(`http://localhost:3000/mybooked?email=${user.email}`)
+    fetch(`http://localhost:3000/mybooked?email=${user.email}`,{
+      headers: {
+        authorization: `Bearer ${user.accessToken}`
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setBooked(data);
