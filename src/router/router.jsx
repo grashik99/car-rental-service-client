@@ -12,6 +12,8 @@ import LogIn from "../components/logIn/LogIn";
 import Booknow from "../pages/Booknow";
 import UpdateInfo from "../pages/UpdateInfo";
 import Loading from "../pages/Loading";
+import MyProfile from "../components/shared/MyProfile";
+import UpdateProfile from "../components/shared/UpdateProfile";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +32,22 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/myProfile",
+        element: (
+          <PrivateRoute>
+            <MyProfile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updateProfile",
+        element: (
+          <PrivateRoute>
+            <UpdateProfile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/availableCars",

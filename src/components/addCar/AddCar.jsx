@@ -10,6 +10,7 @@ import car1Lottie from "../../assets/lottie/car (4).json";
 const AddCar = () => {
   const { user } = use(AuthContext);
   const navigate = useNavigate();
+  const today = new Date().toISOString().split("T")[0];
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -28,6 +29,7 @@ const AddCar = () => {
       addedBy: user?.displayName,
       email: user?.email,
       photo: user?.photoURL,
+      datePost: today,
     };
 
     axios({
@@ -58,7 +60,7 @@ const AddCar = () => {
       style={{ backgroundImage: `url(${bg})` }}
       className="bg-cover bg-center py-4"
     >
-      <div className="absolute md:-top-50 md:right-10 z-0 overflow-hidden">
+      <div className="absolute md:-top-50 md:right-10 z-0 overflow-hidden pointer-events-none">
         <Lottie
           animationData={car1Lottie}
           className="w-full h-full object-cover"

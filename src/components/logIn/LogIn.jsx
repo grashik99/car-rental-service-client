@@ -1,9 +1,17 @@
 import { use, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import Lottie from "lottie-react";
+import ani from "../../assets/lottie/login.json";
+import Swal from "sweetalert2";
 
 const LogIn = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
   const { logIn } = use(AuthContext);
 
   const [showPass, setShowPass] = useState(false);
@@ -16,15 +24,24 @@ const LogIn = () => {
     logIn(email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        form.reset()
+        if (userCredential) {
+          Swal.fire({
+            title: "Loged In successfully",
+            icon: "success",
+            draggable: true,
+          });
+          form.reset();
+          navigate(from, { replace: true });
+        }
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+         Swal.fire({
+              title: `${errorCode}`,
+              icon: "warning",
+              draggable: true,
+            });
       });
   };
 
@@ -34,7 +51,10 @@ const LogIn = () => {
 
   return (
     <div className="flex items-center justify-center h-[80vh]">
-      <div className="card bg-base-200/90 w-10/12 md:w-fit md:min-w-[350px] shrink-0 shadow-2xl">
+      <div className="hidden md:flex">
+        <Lottie animationData={ani} />
+      </div>
+      <div className="card bg-base-200/90 w-10/12 max-w-sm shrink-0 shadow-2xl">
         <div className="card-body">
           <form onSubmit={handleSignUp} className="fieldset">
             <label className="label">Email</label>

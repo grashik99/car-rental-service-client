@@ -1,12 +1,15 @@
 import { use, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
+import regLotti from "../../assets/lottie/register.json";
+import Lottie from "lottie-react";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUserWithEmail, updateUser } = use(AuthContext);
-
+const navigate = useNavigate()
   const [showPass, setShowPass] = useState(false);
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -15,34 +18,38 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    // createNewUser.
+    
+
     createUserWithEmail(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+      .then(() => {
         const updateInfo = { displayName: name, photoURL: photo };
         updateUser(updateInfo)
           .then(() => {
-            // Profile updated!
-            // ...
             axios({
               method: "post",
               url: "http://localhost:3000/addUser",
               data: { name, email, photo },
-            }).then(res => console.log(`User added to mongoDB${res}`))
+            }).then((res) => {
+              console.log(res.data.insertedId);
+              if (res.data.insertedId) {
+                Swal.fire({
+                  title: "Created Successfully",
+                  icon: "success",
+                  draggable: true,
+                });
+              }
+            });
+            navigate('/')
             form.reset();
           })
-          .catch((error) => {
-            console.log(error);
-            // An error occurred
-            // ...
-          });
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-        // ..
+         Swal.fire({
+              title: `${errorCode}`,
+              icon: "error",
+              draggable: true,
+            });
       });
   };
 
@@ -52,6 +59,9 @@ const Register = () => {
 
   return (
     <div className="flex items-center justify-center h-[80vh]">
+      <div className="size-100 hidden md:flex">
+        <Lottie animationData={regLotti} className="w-full h-full" />
+      </div>
       <div className="card bg-base-200/90 w-10/12 md:w-fit md:min-w-[350px] shrink-0 shadow-2xl">
         <div className="card-body">
           <form onSubmit={handleSignUp} className="fieldset">

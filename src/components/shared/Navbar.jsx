@@ -13,7 +13,7 @@ const Navbar = () => {
       })
       .catch((error) => {
         // An error happened.
-        console.log(error)
+        console.log(error);
       });
   };
 
@@ -73,7 +73,7 @@ const Navbar = () => {
                       src={
                         user?.photoURL
                           ? user?.photoURL
-                          : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                          : "https://img.daisyui.com/images/profile/demo/distracted1@192.webp"
                       }
                     />
                   </div>
@@ -83,10 +83,7 @@ const Navbar = () => {
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
                 >
                   <li>
-                    <a className="justify-between">Profile</a>
-                  </li>
-                  <li>
-                    <a>Settings</a>
+                    <Link to="/myProfile">Profile</Link>
                   </li>
                   <li>
                     <a onClick={handleLogOut}>Logout</a>

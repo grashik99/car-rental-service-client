@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IoLocationSharp } from "react-icons/io5";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
@@ -108,12 +109,13 @@ const CarCard = ({ car, my, myBook }) => {
         <h2 className="text-2xl font-bold">{car.model}</h2>
         <div className="grid grid-cols-2 gap-y-1 mt-2">
           <p className="text-gray-600">Price: ${car.price}/day</p>
-          <p className="text-sm">Location: {car.location}</p>
+          <p className="text-sm flex items-center "><IoLocationSharp className="mr-2" /> Location: {car.location} </p>
+          <p className="text-gray-600">Date Posted: {car.datePost ? car.datePost : "2025-06-08"}</p>
           {myBook ? (
             <p className="text-sm text-gray-500 col-span-2">
               Booking End: {car.endDate}
             </p>
-          ) : (
+          ) : ( 
             <p className="text-sm text-gray-500 col-span-2">
               Bookings: {car.bookingCount}
             </p>

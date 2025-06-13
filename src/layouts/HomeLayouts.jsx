@@ -1,4 +1,5 @@
 import Banner from "../components/banner/Banner";
+import ShowLast from "../components/showLast/ShowLast";
 import WhyUs from "../components/whyUs/WhyUs";
 
 const HomeLayouts = () => {
@@ -6,6 +7,7 @@ const HomeLayouts = () => {
     <div>
       <Banner />
       <WhyUs />
+      <ShowLast/>
     </div>
   );
 };
