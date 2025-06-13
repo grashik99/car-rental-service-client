@@ -5,53 +5,6 @@ import Swal from "sweetalert2";
 
 const CarCard = ({ car, my, myBook }) => {
   const navigate = useNavigate();
-  const cancelBook = (id, bookingId) => {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger",
-      },
-      buttonsStyling: false,
-    });
-    swalWithBootstrapButtons
-      .fire({
-        title: "Are you sure?",
-        text: "You might not be able to return it!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, Cancel It!",
-        cancelButtonText: "No, Keep It!",
-        reverseButtons: true,
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          axios
-            .delete(`http://localhost:3000/booked/delete/${bookingId}`)
-            .then(() => {
-              axios
-                .patch(`http://localhost:3000/car/${id}`, {
-                  availability: "Available",
-                })
-                .then((response) => {
-                  if (response.data.modifiedCount === 1) {
-                    swalWithBootstrapButtons.fire({
-                      title: "Cancelled!",
-                      text: "Your Booking has been cancelled.",
-                      icon: "success",
-                    });
-                    navigate("/availableCars");
-                  }
-                })
-                .catch((error) => {
-                  console.error("Error updating:", error);
-                });
-            })
-            .catch((error) => {
-              console.error("Error deleting:", error);
-            });
-        }
-      });
-  };
 
   const handleDelete = () => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -109,13 +62,17 @@ const CarCard = ({ car, my, myBook }) => {
         <h2 className="text-2xl font-bold">{car.model}</h2>
         <div className="grid grid-cols-2 gap-y-1 mt-2">
           <p className="text-gray-600">Price: ${car.price}/day</p>
-          <p className="text-sm flex items-center "><IoLocationSharp className="mr-2" /> Location: {car.location} </p>
-          <p className="text-gray-600">Date Posted: {car.datePost ? car.datePost : "2025-06-08"}</p>
+          <p className="text-sm flex items-center ">
+            <IoLocationSharp className="mr-2" /> Location: {car.location}{" "}
+          </p>
+          <p className="text-gray-600">
+            Date Posted: {car.datePost ? car.datePost : "2025-06-08"}
+          </p>
           {myBook ? (
             <p className="text-sm text-gray-500 col-span-2">
               Booking End: {car.endDate}
             </p>
-          ) : ( 
+          ) : (
             <p className="text-sm text-gray-500 col-span-2">
               Bookings: {car.bookingCount}
             </p>
@@ -136,12 +93,7 @@ const CarCard = ({ car, my, myBook }) => {
               </button>
             </div>
           ) : myBook ? (
-            <button
-              className="btn btn-success w-full"
-              onClick={() => cancelBook(car._id, car.bookingId)}
-            >
-              Cancel Booking
-            </button>
+            <button className="btn btn-success w-full">Cancel Booking</button>
           ) : (
             <Link to={`/bookNow/${car._id}`}>
               <button className="btn btn-success w-full">View Details</button>

@@ -1,7 +1,7 @@
 import { use, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import Loading from "../../pages/Loading";
-import CarCard from "../shared/CarCard";
+import CarList from "../shared/CarList";
 import { Link } from "react-router";
 import bg from "../../assets/bg-x-3.jpg";
 
@@ -28,10 +28,12 @@ const MyBooking = () => {
           <Loading />
         ) : booked?.length >= 1 ? (
           <>
-            <div className="grid md:grid-cols-3 justify-between gap-4">
-              {booked?.map((car) => (
-                <CarCard key={car._id} car={car} myBook={myBook} />
-              ))}
+            <div>
+              <ul className="list bg-accent rounded-box shadow-md">
+                  {booked.map((car, index) => (
+                    <CarList key={car._id} car={car} index={index} myBook={myBook} />
+                  ))}
+                </ul>
             </div>
           </>
         ) : (

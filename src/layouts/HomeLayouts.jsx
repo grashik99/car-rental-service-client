@@ -1,4 +1,5 @@
 import Banner from "../components/banner/Banner";
+import Offers from "../components/offers/Offers";
 import ShowLast from "../components/showLast/ShowLast";
 import WhyUs from "../components/whyUs/WhyUs";
 
@@ -7,7 +8,8 @@ const HomeLayouts = () => {
     <div>
       <Banner />
       <WhyUs />
-      <ShowLast/>
+      <ShowLast />
+      <Offers />
     </div>
   );
 };

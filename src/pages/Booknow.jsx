@@ -14,17 +14,25 @@ const Booknow = () => {
   const handleBooking = () => {
     const startDate = document.getElementById("startDate").value;
     const endDate = document.getElementById("endDate").value;
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const dayDif = end - start;
+    const totalDays = dayDif / 86400000;
+    const totalPriceWithoutVet = totalDays * car.price;
+    const vet = totalPriceWithoutVet * 0.18;
+    const totalPrice = totalPriceWithoutVet + vet;
     axios({
       method: "post",
       url: "http://localhost:3000/booking",
       data: { carId: car._id, bookedBy: user.email, startDate, endDate },
     })
-      .then(function (response) {
+      .then(function () {
         const newBookingCount = car.bookingCount + 1;
         axios
           .patch(`http://localhost:3000/car/${car._id}`, {
             availability: "Unavailable",
             bookingCount: newBookingCount,
+            totalPrice,
           })
           .then((response) => {
             if (response.data.modifiedCount) {

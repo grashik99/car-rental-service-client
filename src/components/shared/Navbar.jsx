@@ -1,20 +1,24 @@
 import Links from "./Links";
 import logo from "../../assets/logo-c.png";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import Swal from "sweetalert2";
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        // Sign-out successful.
+        Swal.fire({
+          title: "Loged Out successfully",
+          icon: "success",
+          draggable: true,
+        });
+        navigate("/");
       })
-      .catch((error) => {
-        // An error happened.
-        console.log(error);
-      });
+      .catch(() => {});
   };
 
   return (
@@ -69,10 +73,10 @@ const Navbar = () => {
                 >
                   <div className="w-10 rounded-full">
                     <img
-                      alt="Tailwind CSS Navbar component"
+                      alt={user?.displayName}
                       src={
                         user?.photoURL
-                          ? user?.photoURL
+                          ? user.providerData[0].photoURL || user?.photoURL
                           : "https://img.daisyui.com/images/profile/demo/distracted1@192.webp"
                       }
                     />

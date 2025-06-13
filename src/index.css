@@ -5,7 +5,7 @@ a.active {
   @apply 
   bg-base-100
   font-semibold
-  text-red-600;
+  text-accent;
 }
 
 /* 

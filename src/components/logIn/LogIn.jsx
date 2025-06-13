@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import Lottie from "lottie-react";
 import ani from "../../assets/lottie/login.json";
 import Swal from "sweetalert2";
+import GoogleLogin from "../shared/GoogleLogin";
 
 const LogIn = () => {
   const navigate = useNavigate();
@@ -37,11 +38,11 @@ const LogIn = () => {
       })
       .catch((error) => {
         const errorCode = error.code;
-         Swal.fire({
-              title: `${errorCode}`,
-              icon: "warning",
-              draggable: true,
-            });
+        Swal.fire({
+          title: `${errorCode}`,
+          icon: "warning",
+          draggable: true,
+        });
       });
   };
 
@@ -80,18 +81,22 @@ const LogIn = () => {
                 </button>
               </div>
             </div>
-            <div>
+            <div className="flex">
               <p>
                 Don't have an account?{" "}
                 <Link to="/register" className="text-blue-500 link link-hover">
                   Register
                 </Link>
               </p>
+              <p className="link">forgetPassword?</p>
             </div>
             <button type="submit" className="btn btn-neutral mt-4">
               Sign In
             </button>
           </form>
+        </div>
+        <div className="w-[85%] mx-auto mb-4">
+          <GoogleLogin />
         </div>
       </div>
     </div>
