@@ -43,7 +43,7 @@ const MyBooking = () => {
         ) : (
           <>
             <div className="flex justify-center items-center">
-              <div className="card md:w-96 mx-auto bg-warning/50 text-white card-md shadow-sm md:my-50">
+              <div className="card md:w-96 mx-auto bg-black text-white card-md shadow-sm md:my-50">
                 <div className="card-body">
                   <h2 className="card-title md:text-4xl p-2 bg-red-500 rounded-xl">
                     No car booked.
