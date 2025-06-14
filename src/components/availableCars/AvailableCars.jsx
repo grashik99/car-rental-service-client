@@ -34,6 +34,26 @@ const AvailableCars = () => {
     }
   };
 
+
+  const sortByPrice = () =>{
+    setSearchLoader(true)
+    setTimeout(()=>{
+      setCars([...cars].sort((a, b)=>a.price-b.price))
+      setSearchLoader(false)
+    },300)
+  }
+
+  const sortByBooking = () =>{
+    setSearchLoader(true)
+    setTimeout(()=>{
+      setCars([...cars].sort((a, b)=>b.bookingCount-a.bookingCount))
+      setSearchLoader(false)
+    },300)
+  }
+
+
+
+
   useEffect(() => {
     setCars(carsLoad);
   }, [carsLoad]);
@@ -72,15 +92,30 @@ const AvailableCars = () => {
           </label>
         </div>
         <div className="navbar-center hidden md:flex">
-          <h2 className="text-3xl font-bold">Available Cars: {cars.length}</h2>
-        </div>
-        <div className="navbar-end">
           <button
-            className="btn btn-primary w-1/3"
+            className="btn btn-primary min-w-[50px]"
             onClick={() => setView(!view)}
           >
             {view ? "List" : "Grid"}
           </button>
+        </div>
+        <div className="navbar-end">
+          <div className="dropdown dropdown-start">
+            <div tabIndex={0} role="button" className="btn m-1">
+              Sort by ⬇️
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu bg-base-100 rounded-box z-1 w-36 p-2 shadow-sm"
+            >
+              <li>
+                <button onClick={sortByPrice}>Price</button>
+              </li>
+              <li>
+                <button onClick={sortByBooking}>Booking</button>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 

@@ -25,7 +25,9 @@ const CarList = ({ car, index, myBook }) => {
       .then((result) => {
         if (result.isConfirmed) {
           axios
-            .delete(`https://take-your-car-sever.vercel.app/booked/delete/${bookingId}`)
+            .delete(
+              `https://take-your-car-sever.vercel.app/booked/delete/${bookingId}`
+            )
             .then(() => {
               axios
                 .patch(`https://take-your-car-sever.vercel.app/car/${id}`, {
@@ -65,15 +67,16 @@ const CarList = ({ car, index, myBook }) => {
           <div>{car.model}</div>
           {myBook ? (
             <>
-            <div>
-              <p>Booking Date: {car.startDate}</p>
-              <p>Total Price: ${car.totalPrice}</p>
-            </div>
+              <div>
+                <p>Booking Date: {car.startDate}</p>
+                <p>Total Price: ${car.totalPrice}</p>
+              </div>
             </>
           ) : (
             <>
               <div className="text-xs uppercase font-semibold opacity-60">
-                {car.features}
+                <p>Price: {car.price}</p>
+                <p>Date of Post: {car.datePost ? car.datePost:"2025-06-08"}</p>
               </div>
             </>
           )}
