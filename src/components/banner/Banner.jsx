@@ -1,5 +1,5 @@
 import Lottie from "lottie-react";
-import car1Lottie from "../../assets/lottie/car (4).json";
+// import car1Lottie from "../../assets/lottie/car (4).json";
 import bg from "../../assets/multiple-car.png";
 import { Link } from "react-router";
 import { Typewriter } from "react-simple-typewriter";
@@ -10,7 +10,7 @@ const Banner = () => {
       className="relative overflow-hidden min-h-[60vh] bg-cover bg-center"
       style={{ backgroundImage: `url(${bg})` }}
     >
-      <div className="absolute top-0 left-0 w-fit h-full z-0">
+      {/* <div className="absolute top-0 left-0 w-fit h-full z-0">
         <Lottie
           animationData={car1Lottie}
           className="w-full h-full object-cover"
@@ -21,7 +21,7 @@ const Banner = () => {
           animationData={car1Lottie}
           className="w-full h-full object-cover"
         />
-      </div>
+      </div> */}
 
       <div className="absolute inset-0 bg-black/30 z-[1]"></div>
 

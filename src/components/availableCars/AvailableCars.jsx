@@ -126,7 +126,7 @@ const AvailableCars = () => {
           ) : (
             <>
               {view ? (
-                <div className="grid md:grid-cols-3 justify-between gap-4">
+                <div className="grid md:grid-cols-3 lg:grid-cols-4 justify-between gap-4">
                   {cars.map((car) => (
                     <CarCard key={car._id} car={car} />
                   ))}

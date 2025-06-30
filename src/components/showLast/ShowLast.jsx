@@ -19,8 +19,8 @@ const ShowLast = () => {
           <h1 className="text-center py-6 text-4xl font-bold p-2">
             Recent Listings
           </h1>
-          <div className="grid md:grid-cols-3 grid-cols-1 w-[95%] mx-auto gap-4 py-4">
-            {cars.slice(-6).map((car) => (
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 grid-cols-1 w-10/12 mx-auto gap-4 py-4">
+            {cars.slice(-8).map((car) => (
               <CarCard key={car._id} car={car} />
             ))}
           </div>
