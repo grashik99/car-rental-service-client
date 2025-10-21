@@ -38,7 +38,7 @@ const Banner = () => {
               delaySpeed={6000}
             />
           </h1>
-          <Link to="/availableCars" className="btn btn-info text-white text-lg">
+          <Link to="/availableCars" className="btn btn-info shadow text-white text-lg">
             View Available Cars
           </Link>
         </div>

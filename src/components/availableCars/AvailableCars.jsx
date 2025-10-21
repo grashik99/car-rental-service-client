@@ -35,20 +35,20 @@ const AvailableCars = () => {
   };
 
 
-  const sortByPrice = () =>{
+  const sortByPrice = () => {
     setSearchLoader(true)
-    setTimeout(()=>{
-      setCars([...cars].sort((a, b)=>a.price-b.price))
+    setTimeout(() => {
+      setCars([...cars].sort((a, b) => a.price - b.price))
       setSearchLoader(false)
-    },300)
+    }, 300)
   }
 
-  const sortByBooking = () =>{
+  const sortByBooking = () => {
     setSearchLoader(true)
-    setTimeout(()=>{
-      setCars([...cars].sort((a, b)=>b.bookingCount-a.bookingCount))
+    setTimeout(() => {
+      setCars([...cars].sort((a, b) => b.bookingCount - a.bookingCount))
       setSearchLoader(false)
-    },300)
+    }, 300)
   }
 
 
@@ -63,7 +63,7 @@ const AvailableCars = () => {
       className="bg-cover bg-center min-h-[60vh]"
       style={{ backgroundImage: `url(${bg})` }}
     >
-      <div className="navbar mb-4 rounded-sm w-[98%] md:w-[90%] mx-auto">
+      <div className="navbar mb-4 rounded-sm contain">
         <div className="navbar-start">
           <label className="input">
             <svg
@@ -119,14 +119,14 @@ const AvailableCars = () => {
         </div>
       </div>
 
-      <div className="w-[98%] md:w-[90%] mx-auto pb-4">
+      <div className="px-[8vw] pb-6 md:pb-12">
         {carsLoad.length >= 1 ? (
           searchLoader ? (
             <Loading />
           ) : (
             <>
               {view ? (
-                <div className="grid md:grid-cols-3 lg:grid-cols-4 justify-between gap-4">
+                <div className="grid md:grid-cols-3 lg:grid-cols-5 justify-between gap-4">
                   {cars.map((car) => (
                     <CarCard key={car._id} car={car} />
                   ))}

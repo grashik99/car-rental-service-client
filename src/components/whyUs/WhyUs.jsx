@@ -19,7 +19,7 @@ const WhyUs = () => {
       style={{ backgroundImage: `url(${bg})` }}
       className="bg-cover bg-center"
     >
-      <div className="w-10/12 mx-auto md:grid grid-cols-2 items-center gap-5 py-5 md:py-0">
+      <div className="md:grid grid-cols-2 items-center gap-5 contain">
         <div>
           <h3 className="text-3xl md:text-5xl text-center font-bold text-white bg-black/40 rounded-2xl p-4">
             Why{" "}

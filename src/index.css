@@ -8,6 +8,23 @@ a.active {
   text-accent;
 }
 
+
+.contain {
+  @apply 
+  px-[8vw]
+  py-6
+  md:py-12
+  mx-auto;
+}
+
+.titles {
+  @apply
+  text-xl
+  md:text-3xl
+  font-bold
+}
+
+
 /* 
 #FBE4D6
 #261FB3

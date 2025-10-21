@@ -16,7 +16,7 @@ const MyCarsCard = ({ myCarsPromise }) => {
         </div>
       ) : (
         <div
-          className=" min-h-[50vh] flex justify-center items-center"
+          className=" min-h-[50vh] flex justify-center items-center rounded-2xl"
           style={{ backgroundImage: `url(${bg})`, opacity: "80%" }}
         >
           <h1 className="text-xl md:text-4xl">

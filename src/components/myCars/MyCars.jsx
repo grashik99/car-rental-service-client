@@ -18,7 +18,7 @@ const MyCars = () => {
       style={{ backgroundImage: `url(${bg})` }}
       className="bg-cover bg-center"
     >
-      <div className="w-[98%] md:w-[90%] mx-auto pb-4">
+      <div className="contain">
         <Suspense fallback={<Loading />}>
           <MyCarsCard
             myCarsPromise={myCarsPromise(user.email, user.accessToken)}
