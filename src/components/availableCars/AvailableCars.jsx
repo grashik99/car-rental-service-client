@@ -3,8 +3,8 @@ import CarCard from "../shared/CarCard";
 import { useEffect, useState } from "react";
 import CarList from "../shared/CarList";
 import bg from "../../assets/bg-long.jpg";
-import { AuthContext } from "../../context/AuthContext";
 import Loading from "../../pages/Loading";
+import ReactPaginate from "react-paginate";
 
 const AvailableCars = () => {
   const carsLoad = useLoaderData();
@@ -57,6 +57,24 @@ const AvailableCars = () => {
   useEffect(() => {
     setCars(carsLoad);
   }, [carsLoad]);
+
+
+
+  const itemsPerPage = 5; 
+  const [itemOffset, setItemOffset] = useState(0);
+
+  const endOffset = itemOffset + itemsPerPage;
+  const currentCars = cars.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(cars.length / itemsPerPage);
+
+  const handlePageClick = (event) => {
+    const newOffset = event.selected * itemsPerPage;
+    setItemOffset(newOffset);
+  };
+
+
+
+
 
   return (
     <div
@@ -127,14 +145,14 @@ const AvailableCars = () => {
             <>
               {view ? (
                 <div className="grid md:grid-cols-3 lg:grid-cols-5 justify-between gap-4">
-                  {cars.map((car) => (
+                  {currentCars.map((car) => (
                     <CarCard key={car._id} car={car} />
                   ))}
                 </div>
               ) : (
                 <div>
                   <ul className="list bg-accent/50 rounded-box shadow-md">
-                    {cars.map((car, index) => (
+                    {currentCars.map((car, index) => (
                       <CarList key={car._id} car={car} index={index} />
                     ))}
                   </ul>
@@ -148,6 +166,33 @@ const AvailableCars = () => {
           </div>
         )}
       </div>
+
+
+      <div className="flex justify-center md:pb-12 pb-6 ">
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="Next >"
+          previousLabel="< Prev"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={3}
+          pageCount={pageCount}
+          renderOnZeroPageCount={null}
+
+
+
+          containerClassName="flex gap-2 list-none"
+          pageClassName="border border-gray-300 rounded-md"
+          pageLinkClassName="px-3 py-1 text-white-600 hover:bg-blue-400 hover:rounded-md block"
+          activeClassName="bg-blue-500 text-white border-white"
+          previousClassName="border border-gray-300 rounded-md"
+          previousLinkClassName="px-3 py-1 text-gray-600 hover:bg-gray-200 block"
+          nextClassName="border border-gray-300 rounded-md"
+          nextLinkClassName="px-3 py-1 text-gray-600 hover:bg-gray-200 block"
+        />
+      </div>
+
+
+
     </div>
   );
 };
