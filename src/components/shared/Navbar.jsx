@@ -76,7 +76,7 @@ const Navbar = () => {
                       alt={user?.displayName}
                       src={
                         user?.photoURL
-                          ? user.providerData[0].photoURL || user?.photoURL
+                          ? user?.photoURL || user.providerData[0].photoURL
                           : "https://img.daisyui.com/images/profile/demo/distracted1@192.webp"
                       }
                     />
