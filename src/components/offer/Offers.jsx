@@ -27,7 +27,7 @@ const Offers = () => {
             affordable. Don't miss out! 👉 Book now and enjoy the ride with
             confidence.
           </p>
-          <Link to="/availableCars" className="btn btn-primary">
+          <Link to="/availableCars" className="btn btn-primary shadow btn-sm px-10 rounded-full">
             Explore
           </Link>
         </div>

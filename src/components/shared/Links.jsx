@@ -1,5 +1,5 @@
 import { use } from "react";
-import { NavLink } from "react-router";
+import { NavLink, Link } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 
 const Links = () => {
@@ -9,8 +9,14 @@ const Links = () => {
       <li className="">
         <NavLink to="/">Home</NavLink>
       </li>
+      <li className="">
+        <NavLink to="/feedback">Feedback</NavLink>
+      </li>
       <li>
         <NavLink to="/availableCars">Available Cars</NavLink>
+      </li>
+      <li>
+        <a href="/#contact">Contact</a>
       </li>
       {user && (
         <>

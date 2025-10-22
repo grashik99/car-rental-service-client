@@ -54,12 +54,12 @@ const Booknow = () => {
   };
 
   return (
-    <div className="w-full px-4 py-8 bg-gray-50">
-      <div className="max-w-6xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+    <div className="w-full px-4 py-8 bg-gray-50 contain">
+      <div className=" bg-white shadow-md rounded-lg overflow-hidden">
         <img
           src={car.imageUrl}
           alt={car.model}
-          className="w-full h-64 object-cover"
+          className="w-full h-64 md:h-96 object-cover"
         />
 
         <div className="p-6">

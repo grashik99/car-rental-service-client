@@ -78,9 +78,9 @@ const CarCard = ({ car, my, myBook }) => {
             </p>
           )}
         </div>
-        <p className="text-sm text-gray-500 mt-2">
+        {/* <p className="text-sm text-gray-500 mt-2">
           Owner: {car.addedBy} ({car.email})
-        </p>
+        </p> */}
 
         <div className="mt-auto pt-4">
           {my ? (

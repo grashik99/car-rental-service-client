@@ -14,6 +14,7 @@ import UpdateInfo from "../pages/UpdateInfo";
 import Loading from "../pages/Loading";
 import MyProfile from "../components/shared/MyProfile";
 import UpdateProfile from "../components/shared/UpdateProfile";
+import CustomerFeedback from "../components/customerFeedback/CustomerFeedback";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+      {
+        path:"/feedback",
+        element: <CustomerFeedback/>
+      }, 
       {
         path: "/myProfile",
         element: (

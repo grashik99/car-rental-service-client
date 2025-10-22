@@ -67,7 +67,7 @@ const AddCar = () => {
         />
       </div>
 
-      <div className="relative max-w-3xl mx-auto bg-base-100/20 p-8 rounded-xl shadow-lg mt-10 z-10">
+      <div className="relative max-w-3xl mx-auto bg-base-100/20 p-8 rounded-xl mt-10 z-10">
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
           Add a New Car
         </h2>
