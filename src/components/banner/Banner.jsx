@@ -27,7 +27,7 @@ const Banner = () => {
 
       <div className="absolute inset-0 z-10 flex justify-center items-center px-4 text-center">
         <div>
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 ">
             <Typewriter
               words={["UNLOCK FREEDOM WITH EVERY RIDE"]}
               loop={Infinity}
@@ -38,7 +38,7 @@ const Banner = () => {
               delaySpeed={6000}
             />
           </h1>
-          <Link to="/availableCars" className="btn btn-info shadow text-white text-lg">
+          <Link to="/availableCars" className="btn btn-info shadow rounded-full px-12 bg-[#00D3BB]">
             View Available Cars
           </Link>
         </div>
