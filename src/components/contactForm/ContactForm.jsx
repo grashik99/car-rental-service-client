@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 
 export default function ContactForm() {
@@ -32,11 +33,11 @@ export default function ContactForm() {
         setSubmitted(true);
 
         setTimeout(() => {
-            
 
 
 
-                        
+
+
             Swal.fire({
                 title: "The vehicle was successfully added.",
                 icon: "success",
@@ -50,6 +51,9 @@ export default function ContactForm() {
 
     return (
         <section id="contact" className="contain">
+            <Helmet>
+                <title>Contact</title>
+            </Helmet>
             <div className="">
                 <h2 className="titles">
                     Contact Us
@@ -136,7 +140,7 @@ export default function ContactForm() {
                         </p>
 
 
-                        
+
                     )}
                 </form>
             </div>

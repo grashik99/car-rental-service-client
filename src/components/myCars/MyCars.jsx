@@ -3,6 +3,7 @@ import MyCarsCard from "./MyCarsCard";
 import { AuthContext } from "../../context/AuthContext";
 import Loading from "../../pages/Loading";
 import bg from "../../assets/bg-long.jpg";
+import { Helmet } from "react-helmet-async";
 
 const myCarsPromise = (email, accessToken) => {
   return fetch(`https://take-your-car-sever.vercel.app/mycars?email=${email}`, {
@@ -18,6 +19,9 @@ const MyCars = () => {
       style={{ backgroundImage: `url(${bg})` }}
       className="bg-cover bg-center"
     >
+      <Helmet>
+        <title>My Cars</title>
+      </Helmet>
       <div className="contain">
         <Suspense fallback={<Loading />}>
           <MyCarsCard

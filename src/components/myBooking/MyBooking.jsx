@@ -4,6 +4,7 @@ import Loading from "../../pages/Loading";
 import CarList from "../shared/CarList";
 import { Link } from "react-router";
 import bg from "../../assets/bg-x-3.jpg";
+import { Helmet } from "react-helmet-async";
 
 const MyBooking = () => {
   const { user, myCarLoading, setMyCarLoading } = use(AuthContext);
@@ -27,6 +28,9 @@ const MyBooking = () => {
       style={{ backgroundImage: `url(${bg})` }}
       className="bg-cover bg-center min-h-[50vh]"
     >
+      <Helmet>
+        <title>My Booking</title>
+      </Helmet>
       <div className="py-2 w-[98%] md:w-[90%] mx-auto">
         {myCarLoading ? (
           <Loading />

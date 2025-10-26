@@ -5,6 +5,7 @@ import CarList from "../shared/CarList";
 // import bg from "../../assets/bg-long.jpg";
 import Loading from "../../pages/Loading";
 import ReactPaginate from "react-paginate";
+import { Helmet } from "react-helmet-async";
 
 const AvailableCars = () => {
   const carsLoad = useLoaderData();
@@ -60,7 +61,7 @@ const AvailableCars = () => {
 
 
 
-  const itemsPerPage = 5; 
+  const itemsPerPage = 5;
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + itemsPerPage;
@@ -79,8 +80,10 @@ const AvailableCars = () => {
   return (
     <div
       className="bg-cover bg-center min-h-[60vh]"
-      
     >
+      <Helmet>
+        <title>Cars</title>
+      </Helmet>
       <div className="navbar mb-4 rounded-sm contain">
         <div className="navbar-start">
           <label className="input">

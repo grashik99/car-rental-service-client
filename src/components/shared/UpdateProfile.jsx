@@ -2,6 +2,7 @@ import { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
+import { Helmet } from "react-helmet-async";
 
 const UpdateProfile = () => {
   const { user, updateUser } = use(AuthContext);
@@ -28,6 +29,9 @@ const UpdateProfile = () => {
   };
   return (
     <div className=" min-h-[50vh] flex justify-center items-center">
+            <Helmet>
+              <title>Profile Settings</title>
+            </Helmet>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body">
           <form onSubmit={handleUpdateProfile} className="fieldset">

@@ -6,10 +6,11 @@ import axios from "axios";
 import regLotti from "../../assets/lottie/register.json";
 import Lottie from "lottie-react";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { createUserWithEmail, updateUser } = use(AuthContext);
-const navigate = useNavigate()
+  const navigate = useNavigate()
   const [showPass, setShowPass] = useState(false);
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -18,7 +19,7 @@ const navigate = useNavigate()
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    
+
 
     createUserWithEmail(email, password)
       .then(() => {
@@ -45,11 +46,11 @@ const navigate = useNavigate()
       })
       .catch((error) => {
         const errorCode = error.code;
-         Swal.fire({
-              title: `${errorCode}`,
-              icon: "error",
-              draggable: true,
-            });
+        Swal.fire({
+          title: `${errorCode}`,
+          icon: "error",
+          draggable: true,
+        });
       });
   };
 
@@ -59,6 +60,9 @@ const navigate = useNavigate()
 
   return (
     <div className="flex items-center justify-center h-[80vh]">
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
       <div className="size-100 hidden md:flex">
         <Lottie animationData={regLotti} className="w-full h-full" />
       </div>

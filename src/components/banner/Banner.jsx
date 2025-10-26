@@ -4,6 +4,7 @@ import bg from "../../assets/multiple-car.jpg";
 import heroImg from "../../assets/hero-car.png";
 import { Link } from "react-router";
 import { Typewriter } from "react-simple-typewriter";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
 const Banner = () => {

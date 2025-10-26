@@ -1,12 +1,16 @@
 import { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router";
+import { Helmet } from "react-helmet-async";
 
 const MyProfile = () => {
   const { user } = use(AuthContext);
 
   return (
     <div className="min-h-[50vh] flex justify-center items-center my-2">
+            <Helmet>
+              <title>My Profile</title>
+            </Helmet>
       <div className="card bg-success w-96 shadow-sm">
         <figure>
           <img

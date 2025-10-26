@@ -18,6 +18,7 @@ You can pass initial reviews via the `initialReviews` prop: <CustomerReviewSecti
 */
 
 import React, { useState, useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 export default function CustomerReviewSection({ initialReviews = [] }) {
   // Sample seed data if none passed
@@ -113,6 +114,9 @@ export default function CustomerReviewSection({ initialReviews = [] }) {
 
   return (
     <section className="contain p-4">
+      <Helmet>
+        <title>Feedback</title>
+      </Helmet>
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 className="text-xl md:text-3xl font-bold">Customer reviews</h2>

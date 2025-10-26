@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 import Lottie from "lottie-react";
 import car1Lottie from "../../assets/lottie/car (4).json";
+import { Helmet } from "react-helmet-async";
 
 const AddCar = () => {
   const { user } = use(AuthContext);
@@ -60,6 +61,9 @@ const AddCar = () => {
       style={{ backgroundImage: `url(${bg})` }}
       className="bg-cover bg-center py-4"
     >
+            <Helmet>
+              <title>Add a Car</title>
+            </Helmet>
       <div className="absolute md:-top-50 md:right-10 z-0 overflow-hidden pointer-events-none">
         <Lottie
           animationData={car1Lottie}

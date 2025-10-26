@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import ani from "../../assets/lottie/login.json";
 import Swal from "sweetalert2";
 import GoogleLogin from "../shared/GoogleLogin";
+import { Helmet } from "react-helmet-async";
 
 const LogIn = () => {
   const navigate = useNavigate();
@@ -52,6 +53,9 @@ const LogIn = () => {
 
   return (
     <div className="flex items-center justify-center h-[80vh]">
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className="hidden md:flex">
         <Lottie animationData={ani} />
       </div>
