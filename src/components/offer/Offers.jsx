@@ -4,14 +4,14 @@ import bg from "../../assets/bg-x-3.jpg";
 const Offers = () => {
   return (
     <div
-      className="hero min-h-[80vh]"
+      className="hero"
       style={{
         backgroundImage:
           `url(${bg})`,
       }}
     >
       <div className="hero-overlay"></div>
-      <div className="hero-content text-neutral-content text-center">
+      <div className="hero-content contain text-neutral-content text-center">
         <div className="max-w-lg">
           <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
           <h1 className="mb-5 text-xl font-bold bg-green-500/60 py-3 rounded-xl">

@@ -9,7 +9,7 @@ export default function HowItWorks() {
   return (
     <section className="bg-blue-50">
       <div className="contain text-center">
-        <h2 className="titles pb-6 md:pb-12">
+        <h2 className="titles text-left pb-6 md:pb-12">
           How It Works
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

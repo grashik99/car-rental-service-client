@@ -58,7 +58,7 @@ const CarCard = ({ car, my, myBook }) => {
     mx-auto 
     bg-white 
     rounded-sm
-    shadow-2xl
+    shadow-lg
     overflow-hidden 
     flex 
     flex-col 

@@ -79,7 +79,7 @@ const AvailableCars = () => {
   return (
     <div
       className="bg-cover bg-center min-h-[60vh]"
-      style={{ backgroundImage: `url(${bg})` }}
+      
     >
       <div className="navbar mb-4 rounded-sm contain">
         <div className="navbar-start">
@@ -185,9 +185,9 @@ const AvailableCars = () => {
           pageLinkClassName="px-3 py-1 text-white-600 hover:bg-blue-400 hover:rounded-md block"
           activeClassName="bg-blue-500 text-white border-white"
           previousClassName="border border-gray-300 rounded-md"
-          previousLinkClassName="px-3 py-1 text-gray-600 hover:bg-gray-200 block"
+          previousLinkClassName="px-3 py-1 hover:bg-gray-200 block"
           nextClassName="border border-gray-300 rounded-md"
-          nextLinkClassName="px-3 py-1 text-gray-600 hover:bg-gray-200 block"
+          nextLinkClassName="px-3 py-1 hover:bg-gray-200 block"
         />
       </div>
 

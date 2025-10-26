@@ -1,5 +1,5 @@
 import Banner from "../components/banner/Banner";
-import ContactForm from "../components/contactForm/ContactForm";
+import CustomerReviewSection from "../components/customerReviewSection/CustomerReviewSection";
 import Faq from "../components/faq/Faq";
 import HowItWorks from "../components/howItWork/HowItWork";
 import Offers from "../components/offer/Offers";
@@ -14,6 +14,7 @@ const HomeLayouts = () => {
       <ShowLast />
       <HowItWorks/>
       <Offers />
+      <CustomerReviewSection/>
       <Faq />
     </div>
   );

@@ -38,11 +38,11 @@ export default function Faq() {
 
     return (
         <section className="bg-gray-50 contain">
-            <div className="max-w-4xl mx-auto text-center mb-10">
+            <div className="mb-10">
                 <h2 className="titles">
                     Frequently Asked Questions
                 </h2>
-                <p className="text-gray-600 text-sm py-6">
+                <p className="text-gray-600 text-sm pt-2">
                     Get quick answers to common questions about car rentals, payments, and our services.
                 </p>
             </div>
