@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router";
 import CarCard from "../shared/CarCard";
 import { useEffect, useState } from "react";
 import CarList from "../shared/CarList";
-import bg from "../../assets/bg-long.jpg";
+// import bg from "../../assets/bg-long.jpg";
 import Loading from "../../pages/Loading";
 import ReactPaginate from "react-paginate";
 
