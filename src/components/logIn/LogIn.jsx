@@ -90,6 +90,12 @@ const LogIn = () => {
               </p>
               <p className="link">forgetPassword?</p>
             </div>
+
+            <div className="border flex flex-col p-2 rounded-sm w-fit border-red-500 text-red-500 mt-2">
+              <label className="">User: admin@take-car.com</label>
+              <label className="">Pass: 111111Aa</label>
+            </div>
+
             <button type="submit" className="btn btn-neutral mt-4">
               Sign In
             </button>
