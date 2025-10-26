@@ -15,6 +15,7 @@ import Loading from "../pages/Loading";
 import MyProfile from "../components/shared/MyProfile";
 import UpdateProfile from "../components/shared/UpdateProfile";
 import CustomerFeedback from "../components/customerFeedback/CustomerFeedback";
+import ContactForm from "../components/contactForm/ContactForm";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
         path:"/feedback",
         element: <CustomerFeedback/>
       }, 
+      {
+        path: "/contact",
+        element: <ContactForm/>
+      },
       {
         path: "/myProfile",
         element: (

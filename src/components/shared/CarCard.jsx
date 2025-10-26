@@ -59,28 +59,31 @@ const CarCard = ({ car, my, myBook }) => {
         className="w-full h-56 object-cover"
       />
       <div className="p-5 flex flex-col flex-grow">
-        <h2 className="text-2xl font-bold text-black">{car.model}</h2>
-        <div className="grid grid-cols-2 gap-y-1 mt-2">
-          <p className="text-gray-600">Price: ${car.price}/day</p>
-          <p className="text-sm flex items-center text-black">
-            <IoLocationSharp className="mr-2 text-black" /> Location: {car.location}{" "}
-          </p>
-          <p className="text-gray-600">
+        <div >
+          <h2 className=" font-bold text-black">{car.model}</h2>
+          <div >
+            <p className="text-gray-600">Price: ${car.price}/day</p>
+            <p className="text-sm flex items-center text-black">
+              {/* <IoLocationSharp className="mr-2 text-black" /> Location: {car.location}{" "} */}
+            </p>
+            {/* <p className="text-gray-600">
             Date Posted: {car.datePost ? car.datePost : "2025-06-08"}
-          </p>
-          {myBook ? (
-            <p className="text-sm text-gray-500 col-span-2">
-              Booking End: {car.endDate}
-            </p>
-          ) : (
-            <p className="text-sm text-gray-500 col-span-2">
-              Bookings: {car.bookingCount}
-            </p>
-          )}
-        </div>
-        {/* <p className="text-sm text-gray-500 mt-2">
+          </p> */}
+            {myBook ? (
+              <p className="text-sm text-gray-500 col-span-2">
+                Booking End: {car.endDate}
+              </p>
+            ) : (
+              <></>
+              // <p className="text-sm text-gray-500 col-span-2">
+              //   Bookings: {car.bookingCount}
+              // </p>
+            )}
+          </div>
+          {/* <p className="text-sm text-gray-500 mt-2">
           Owner: {car.addedBy} ({car.email})
         </p> */}
+        </div>
 
         <div className="mt-auto pt-4">
           {my ? (

@@ -9,9 +9,6 @@ const Banner = () => {
   return (
     <div className="relative overflow-hidden md:min-h-[60vh] bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }}>
 
-
-
-
       <div className="contain grid gap-4 md:grid-cols-2  justify-center items-center">
 
 
@@ -35,7 +32,6 @@ const Banner = () => {
         <div className="">
           <img src={heroImg} alt="Car" className="max-h-[60vh]" />
         </div>
-
 
       </div>
     </div>

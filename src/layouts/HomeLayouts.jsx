@@ -15,7 +15,6 @@ const HomeLayouts = () => {
       <HowItWorks/>
       <Offers />
       <Faq />
-      <ContactForm/>
     </div>
   );
 };

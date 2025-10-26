@@ -16,7 +16,7 @@ const Links = () => {
         <NavLink to="/availableCars">Available Cars</NavLink>
       </li>
       <li>
-        <a href="/#contact">Contact</a>
+        <a href="/contact">Contact</a>
       </li>
       {user && (
         <>
