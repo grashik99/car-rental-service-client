@@ -68,7 +68,7 @@ const CarCard = ({ car, my, myBook }) => {
       <img
         src={car.imageUrl}
         alt={car.model}
-        className="w-full h-56 object-cover"
+        className="w-full h-44 object-cover"
       />
       <div className="p-5 flex flex-col flex-grow">
         <div >
