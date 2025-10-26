@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 const Banner = () => {
   return (
-    <div className="relative overflow-hidden md:min-h-[60vh] bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }}>
+    <div className="relative overflow-hidden lg:min-h-[60vh] bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }}>
 
       <div className="contain grid gap-4 md:grid-cols-2  justify-center items-center">
 
@@ -31,11 +31,10 @@ const Banner = () => {
           </Link>
         </div>
         <motion.div
-          initial={{ opacity: 1, x: 300 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 2 }}
+          initial={{ opacity: 1, x: 150, y:-150}}
+          whileInView={{ opacity: 1, x: 0, y:0 }}
+          transition={{ duration: 1 }}
           viewport={{ once: true }}
-        // className="max-h-[60vh]"
         >
           <img src={heroImg} alt="Car" />
         </motion.div>

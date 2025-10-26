@@ -115,7 +115,7 @@ export default function CustomerReviewSection({ initialReviews = [] }) {
   return (
     <section className="contain p-4">
       <Helmet>
-        <title>Feedback</title>
+        <title>Car Rental Service | Feedback</title>
       </Helmet>
       <div className="flex items-center justify-between mb-4">
         <div>

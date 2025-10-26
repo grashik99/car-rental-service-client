@@ -52,7 +52,7 @@ export default function ContactForm() {
     return (
         <section id="contact" className="contain">
             <Helmet>
-                <title>Contact</title>
+                <title>Car Rental Service | Contact</title>
             </Helmet>
             <div className="">
                 <h2 className="titles">

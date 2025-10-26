@@ -30,7 +30,7 @@ const UpdateProfile = () => {
   return (
     <div className=" min-h-[50vh] flex justify-center items-center">
             <Helmet>
-              <title>Profile Settings</title>
+              <title>Car Rental Service | Profile Settings</title>
             </Helmet>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body">

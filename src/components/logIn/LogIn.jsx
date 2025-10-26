@@ -54,7 +54,7 @@ const LogIn = () => {
   return (
     <div className="flex items-center justify-center h-[80vh]">
       <Helmet>
-        <title>Login</title>
+        <title>Car Rental Service | Login</title>
       </Helmet>
       <div className="hidden md:flex">
         <Lottie animationData={ani} />
@@ -96,7 +96,7 @@ const LogIn = () => {
             </div>
 
             <div className="border flex flex-col p-2 rounded-sm w-fit border-red-500 text-red-500 mt-2">
-              <label className="">User: admin@take-car.com</label>
+              <label className="">Email: admin@take-car.com</label>
               <label className="">Pass: 111111Aa</label>
             </div>
 

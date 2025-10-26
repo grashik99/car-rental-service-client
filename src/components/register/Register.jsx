@@ -61,7 +61,7 @@ const Register = () => {
   return (
     <div className="flex items-center justify-center h-[80vh]">
       <Helmet>
-        <title>Register</title>
+        <title>Car Rental Service | Register</title>
       </Helmet>
       <div className="size-100 hidden md:flex">
         <Lottie animationData={regLotti} className="w-full h-full" />

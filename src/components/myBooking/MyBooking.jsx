@@ -29,7 +29,7 @@ const MyBooking = () => {
       className="bg-cover bg-center min-h-[50vh]"
     >
       <Helmet>
-        <title>My Booking</title>
+        <title>Car Rental Service | My Booking</title>
       </Helmet>
       <div className="py-2 w-[98%] md:w-[90%] mx-auto">
         {myCarLoading ? (

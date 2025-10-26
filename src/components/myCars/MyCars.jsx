@@ -20,7 +20,7 @@ const MyCars = () => {
       className="bg-cover bg-center"
     >
       <Helmet>
-        <title>My Cars</title>
+        <title>Car Rental Service | My Cars</title>
       </Helmet>
       <div className="contain">
         <Suspense fallback={<Loading />}>

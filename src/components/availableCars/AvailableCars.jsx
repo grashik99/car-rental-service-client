@@ -61,7 +61,7 @@ const AvailableCars = () => {
 
 
 
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + itemsPerPage;
@@ -74,15 +74,12 @@ const AvailableCars = () => {
   };
 
 
-
-
-
   return (
     <div
       className="bg-cover bg-center min-h-[60vh]"
     >
       <Helmet>
-        <title>Cars</title>
+        <title>Car Rental Service | Cars</title>
       </Helmet>
       <div className="navbar mb-4 rounded-sm contain">
         <div className="navbar-start">

@@ -11,7 +11,7 @@ const HomeLayouts = () => {
   return (
     <div>
       <Helmet>
-        <title>Home</title>
+        <title>Car Rental Service | Home</title>
       </Helmet>
       <Banner />
       <WhyUs />

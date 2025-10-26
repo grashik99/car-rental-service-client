@@ -9,7 +9,7 @@ const MyProfile = () => {
   return (
     <div className="min-h-[50vh] flex justify-center items-center my-2">
             <Helmet>
-              <title>My Profile</title>
+              <title>Car Rental Service | My Profile</title>
             </Helmet>
       <div className="card bg-success w-96 shadow-sm">
         <figure>
