@@ -4,6 +4,7 @@ import bg from "../../assets/multiple-car.jpg";
 import heroImg from "../../assets/hero-car.png";
 import { Link } from "react-router";
 import { Typewriter } from "react-simple-typewriter";
+import { motion } from "framer-motion";
 
 const Banner = () => {
   return (
@@ -28,10 +29,15 @@ const Banner = () => {
             View Available Cars
           </Link>
         </div>
-
-        <div className="">
-          <img src={heroImg} alt="Car" className="max-h-[60vh]" />
-        </div>
+        <motion.div
+          initial={{ opacity: 1, x: 300 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 2 }}
+          viewport={{ once: true }}
+        // className="max-h-[60vh]"
+        >
+          <img src={heroImg} alt="Car" />
+        </motion.div>
 
       </div>
     </div>
